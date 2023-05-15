@@ -18,7 +18,5 @@ Route::get('/', function () {
 });
 Route::controller(SelfProfileController::class)->prefix('admin')->name('profile.')->group(function(){
     Route::get('profile/create', 'add')->name('add');
-});
-Route::controller(SelfProfileController::class)->prefix('admin')->name('profile.')->group(function(){
     Route::get('profile/edit', 'edit')->name('edit');
 });
