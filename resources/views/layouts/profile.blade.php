@@ -15,7 +15,7 @@
 
     <!-- Scripts -->
     {{-- Laravel標準で用意されているJavascript、CSSを読み込みます --}}
-    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/sass/admin.scss'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/sass/profile.scss'])
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -44,7 +44,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         @guest
-                        
+                        <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                         @else
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -54,7 +54,11 @@
                                 <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                <li><a class="dropdown-item" href="{{ route('login') }}" onclick="event.preventDefault(); document.getElementById('login-form').submit();">
+                                        {{ __('Login') }} 
+                                    </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <form id="login-form" action="{{ route('login') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 </li>
