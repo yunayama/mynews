@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProfileRequest;
+use App\Models\Profile;
 
 class SelfProfileController extends Controller
 {
@@ -13,7 +15,7 @@ class SelfProfileController extends Controller
     return view('admin.profile.create');
 }
 
-public function create()
+public function create(ProfileRequest $request)
 {
     return redirect('admin/profile/create');
 }
