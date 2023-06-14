@@ -17,6 +17,14 @@ class SelfProfileController extends Controller
 
 public function create(ProfileRequest $request)
 {
+    $profile = new Profile();
+    $form = $request->all();
+    unset($form['_token']);
+    $profile->timestamps = false;
+    $profile->fill($form);
+    $profile->save();
+
+
     return redirect('admin/profile/create');
 }
 
