@@ -31,7 +31,7 @@
                     <table class="table table-dark">
                         <thead>
                             <tr>
-                                <th width="10%">ID</th>
+                            <th width="10%">ID</th>
                                 <th width="20%">タイトル</th>
                                 <th width="50%">本文</th>
                             </tr>
@@ -39,7 +39,7 @@
                         <tbody>
                             @foreach($posts as $news)
                                 <tr>
-                                    <th>{{ $news->id }}</th>
+                                <th>{{ $news->id }}</th>
                                     <td>{{ Str::limit($news->title, 100) }}</td>
                                     <td>{{ Str::limit($news->body, 250) }}</td>
                                 </tr>

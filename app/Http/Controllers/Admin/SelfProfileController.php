@@ -19,13 +19,12 @@ public function create(ProfileRequest $request)
 {
     $profile = new Profile();
     $form = $request->all();
+
     unset($form['_token']);
-    $profile->timestamps = false;
     $profile->fill($form);
     $profile->save();
 
-
-    return redirect('admin/profile/create');
+    return redirect('admin/profile');
 }
 
 public function index(Request $request)
@@ -35,7 +34,7 @@ public function index(Request $request)
           // 検索されたら検索結果を取得する
           $posts = Profile::where('name', $cond_title)->get();
       } else {
-          // それ以外はすべてのプロフィールを取得する
+          // それ以外はすべてのニュースを取得する
           $posts = Profile::all();
       }
       return view('admin.profile.index', ['posts' => $posts, 'cond_title' => $cond_title]);

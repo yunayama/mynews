@@ -9,6 +9,6 @@ class Profile extends Model
 {
     use HasFactory;
 
-    protected $guarded = array('name');
-    
+    protected $guarded = array('id');
+
 }
