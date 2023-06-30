@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
 use App\Models\Profile;
+use App\Models\History;
+use Carbon\Carbon;
 
 class SelfProfileController extends Controller
 {
@@ -51,13 +53,19 @@ public function index(Request $request)
 
   public function update(ProfileRequest $request)
   {
-      $profile = Profile::find($request->id);
-      // 送信されてきたフォームデータを格納する
-      $profile_form = $request->all();
+    $this->validate($request, Profile::$rules);
+    $profile = Profile::find($request->input('id'));
+    $profile_form = $request->all();
+
       unset($profile_form['_token']);
 
       // 該当するデータを上書きして保存する
       $profile->fill($profile_form)->save();
+
+      $history = new History;
+      $history->profile_id = $profile->id;
+      $history->edited_at = Carbon::now('Asia/Tokyo');
+      $history->save();
 
       return redirect('admin/profile');
   }

@@ -44,8 +44,6 @@ Route::controller(SelfProfileController::class)->prefix('admin')->middleware('au
     Route::get('profile/edit', 'edit')->name('edit');
     Route::post('profile/edit', 'update')->name('update');
     Route::get('profile', 'index')->name('index');
-    Route::get('profile/edit', 'edit')->name('edit');
-    Route::post('profile/edit', 'update')->name('update');
     Route::get('profile/delete', 'delete')->name('delete');
 });
 
