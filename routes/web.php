@@ -48,4 +48,5 @@ Route::controller(SelfProfileController::class)->prefix('admin')->middleware('au
 });
 
 
+
 require __DIR__.'/auth.php';

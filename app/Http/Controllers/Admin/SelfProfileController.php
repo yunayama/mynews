@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
 use App\Models\Profile;
-use App\Models\History;
+use App\Models\ProfileHistory;
 use Carbon\Carbon;
 
 class SelfProfileController extends Controller
@@ -62,10 +62,10 @@ public function index(Request $request)
       // 該当するデータを上書きして保存する
       $profile->fill($profile_form)->save();
 
-      $history = new History;
-      $history->profile_id = $profile->id;
-      $history->edited_at = Carbon::now('Asia/Tokyo');
-      $history->save();
+      $profile_history = new ProfileHistory;
+      $profile_history->profile_id = $profile->id;
+      $profile_history->edited_at = Carbon::now('Asia/Tokyo');
+      $profile_history->save();
 
       return redirect('admin/profile');
   }
