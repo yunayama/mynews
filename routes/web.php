@@ -47,5 +47,6 @@ Route::controller(SelfProfileController::class)->prefix('admin')->middleware('au
     Route::get('profile/delete', 'delete')->name('delete');
 });
 
+Route::get('/', [ 'App\Http\Controllers\Admin\NewsController', 'list']);
 
 require __DIR__.'/auth.php';
